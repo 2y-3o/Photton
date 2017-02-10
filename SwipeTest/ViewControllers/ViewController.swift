@@ -263,7 +263,6 @@ KolodaViewDataSource,KolodaViewDelegate, ViewControllerDelegate {
     //カメラロールから写真を選んだとき
     //MARK: UIImagePickerControllerDelegate
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        print(info["filename"])
         
         dispatch_async(dispatch_get_main_queue(), {
         
@@ -441,7 +440,7 @@ KolodaViewDataSource,KolodaViewDelegate, ViewControllerDelegate {
         
         let assets: PHFetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: nil)
         assets.enumerateObjectsUsingBlock { (asset, index, stop) -> Void in
-            self.photoAssets.append(asset as! PHAsset)
+            self.photoAssets.insert(asset as! PHAsset, atIndex: 0)
         }
         
         let ud = NSUserDefaults.standardUserDefaults()
